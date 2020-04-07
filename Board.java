@@ -1,9 +1,13 @@
 class Board {
     private Square[][] gameBoard;
-    private int rows = 20, columns = 20;
+    private int rows, columns;
     
-    public Board() {
-        Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
+    public Board(int rows, int columns) {
+        // Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
+
+        this.rows = rows;
+        this.columns = columns;
+
         gameBoard = new Square[rows][columns];
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {

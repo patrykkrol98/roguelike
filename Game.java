@@ -8,7 +8,7 @@ class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
         // System.out.println((int)ch);
-        Board board = new Board();
+        Board board = new Board(20, 20);
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
 
