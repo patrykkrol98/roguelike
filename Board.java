@@ -1,18 +1,17 @@
 class Board {
     private Square[][] gameBoard;
     private int rows = 20, columns = 20;
-    // Obstacle obstacle = new Obstacle();
     
     public Board() {
-        Obstacle.addObstacle(5, 5);
+        Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
         gameBoard = new Square[rows][columns];
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
                 gameBoard[row][column] = new Square();
             }
         }
-        for (Coordinates square : Obstacle.getObstacle()) { // dodawanie przeszkod nastepny for innych rodzajow czy wrogow
-            gameBoard[square.getX()][square.getY()] = new Square(square.getX(), square.getY(), false);//zmieniec
+        for (Coordinates square : Obstacle.getObstacle()) { // dodawanie przeszkod nastepny for innych rodzajow czy wrogow lub przy pomocy interfejsow
+            gameBoard[square.getX()][square.getY()] = new Square(square.getX(), square.getY(), Icon.WALL_CELL);
         }
     }
 
@@ -20,8 +19,8 @@ class Board {
         return gameBoard;
     }
 
-    public void setSquare(int row, int column, boolean cos) { // cos
-        gameBoard[row][column] = new Square(row, column, true);
+    public void setSquare(int row, int column, Icon icon) {
+        gameBoard[row][column] = new Square(row, column, icon);
     }
 
     public Square getSquare(int row, int column) {
@@ -29,26 +28,15 @@ class Board {
     }
 
     public String toString() {
-        String wallCell = " # ";//z enumow wziac
-        String result = wallCell.repeat(rows + 2) + "\n";
+        String result = String.format("%s%n", Icon.WALL_CELL.getIcon().repeat(rows + 2));
         for (Square[] row: gameBoard) {
-            result += wallCell;
+            result += Icon.WALL_CELL.getIcon();
             for (Square element: row) {
                 result += element.toString();
             }
-            result += wallCell + "\n";
+            result += String.format("%s%n", Icon.WALL_CELL.getIcon());
         }
-        result += wallCell.repeat(rows + 2);
+        result += Icon.WALL_CELL.getIcon().repeat(rows + 2);
         return result;
     }
-
-    // public boolean isOccupied(Obstacle obstacle, int row, int column) {
-    //     boolean isOccupied = false;
-    //     for (Coordinates square : obstacle.getObstacle()) {
-    //         if (square.getX() == row && square.getY() == column) {
-    //             return isOccupied = true;
-    //         }
-    //     }
-    //     return isOccupied;
-    // }
 }

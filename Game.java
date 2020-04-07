@@ -6,40 +6,31 @@ class Game extends KeyAdapter {
     
     @Override
     public void keyPressed(KeyEvent event) {
-
         char ch = event.getKeyChar();
-
-        System.out.println((int)ch);
+        // System.out.println((int)ch);
         Board board = new Board();
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
+
         switch(ch) {
             case 'w':
-                // code block
-                // Hero.moveUp()
                 player.moveUp(board);
                 break;
 
             case 's':
-                // code block
-                // Hero.moveDown()
                 player.moveDown(board);
                 break;
 
             case 'a':
-                // code block
-                // Hero.moveLeft()
                 player.moveLeft(board);
                 break;
 
             case 'd':
-                // code block
-                // Hero.moveRight()
                 player.moveRight(board);
                 break;
 
         }
-        board.setSquare(player.getX(), player.getY(), true); //cos
+        board.setSquare(player.getX(), player.getY(), Icon.PLAYER);
         System.out.println(board);
         System.out.println(player);
     }
@@ -50,6 +41,3 @@ class Game extends KeyAdapter {
         }
 }
 
-    // public void createBoard(int width, int height) {
-
-    // }
