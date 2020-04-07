@@ -15,6 +15,10 @@ class Coordinates {
         return y;
     }
 
+    public void setX(int newX){
+        this.x = newX;
+    }
+
     public String toString() {
         String result = String.format("(%d, %d)", this.x, this.y);
         return result;
