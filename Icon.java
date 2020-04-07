@@ -10,4 +10,8 @@ public enum Icon {
     private Icon(String icon) {
         this.icon = icon;
     }
+
+    public String getIcon() {
+        return icon;
+    }
 }
