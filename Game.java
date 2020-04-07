@@ -11,7 +11,7 @@ class Game extends KeyAdapter {
 
         System.out.println((int)ch);
         Board board = new Board();
-        Obstacle.createObstacle();
+        Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         switch(ch) {
             
             case 'w':
