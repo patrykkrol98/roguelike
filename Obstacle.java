@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Obstacle {
+public class Obstacle implements Collidable{
     private static ArrayList<Coordinates> obstacles = new ArrayList<Coordinates>();
 
     // public Obstacle() {
