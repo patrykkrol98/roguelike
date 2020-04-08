@@ -44,7 +44,7 @@ class Game extends KeyAdapter {
 
         }
         // board.setSquare(player.getX(), player.getY(), Icon.PLAYER);
-        board.setPlayerOnBoard(player.getX(), player.getY(), player); 
+        board.setSomethingOnBoard(player.getX(), player.getY(), player); 
         System.out.println(board);
         // System.out.println(player);
     }
