@@ -2,7 +2,7 @@ public class Enemy extends Coordinates {
     private String name;
     private int health;
     private int attack;
-    private final String state = Icon.ENEMY.toString();
+    private final String state = Icon.ENEMY.getIcon();
 
     public Enemy(String name, int health, int attack, int x, int y) {
         super(x, y);
