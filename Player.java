@@ -1,81 +1,26 @@
 
 import java.util.List;
 
-public class Player {
-    private String name;
+public class Player extends Coordinates {
+    // private String name;
     // private List<Item> items;
-    private Coordinates position = new Coordinates(10, 10);
-    private int x = 10, y = 10;
+    private final String state = Icon.PLAYER.getIcon();
     private int health;
     private int attack;
 
-    // public Player(String name, Coordinates coo) {
-    //     this.name = name;
-    //     health = 100;
-    // }
-
-    public int getX() {
-        return x;
+    public Player(int startX, int startY) {
+        super(startX, startY);
+        health = 100;
+        attack = 50;
     }
 
-    public int getY() {
-        return y;
+    public void move(int x, int y) {
+        this.x += x;
+        this.y += y; 
     }
 
-    public boolean checkIfNextIsWall(Board board, int num, int num2) {
-        return board.getSquare(x + num, y + num2).getSquare().equals(Icon.WALL_CELL.getIcon());
-
-    }
-
-    public void moveUp(Board board) {
-        if (x - 1 < 0) { 
-            return;
-        } 
-        else if (checkIfNextIsWall(board, - 1, 0)) {
-            return;
-        } else {
-            x -= 1;
-        }
-    }
-
-    public void moveDown(Board board) {
-        if (x + 1 >= 20) {
-            return;
-        } 
-        else if (checkIfNextIsWall(board, 1, 0)) {
-            return;
-        } 
-        else {
-            x += 1;
-        }
-    }
-
-    public void moveLeft(Board board) {
-        if (y - 1 < 0) {
-            return;
-        } 
-        else if (checkIfNextIsWall(board, 0, - 1)) {
-            return;
-        } 
-        else {
-            y -= 1;
-        }
-    }
-
-    public void moveRight(Board board) {
-        if (y + 1 >= 20) {
-            return;
-        } 
-        else if (checkIfNextIsWall(board, 0, 1)) {
-            return;
-        }  
-        else {
-            y += 1;
-        }
-    }
-
+    @Override
     public String toString() {
-        String result = String.format("Player Coo: (row %d, column %d)", this.x, this.y);
-        return result;
+        return state;
     }
 }
