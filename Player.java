@@ -9,6 +9,7 @@ public class Player {
     public Inventory inventory;
     public Stats stats;
 
+
     public Player(){
         this.stats = new Stats();
     }
@@ -16,11 +17,6 @@ public class Player {
     //     this.name = name;
     //     health = 100;
     // }
-
-    public void move(Coordinates coordinates) {
-        this.x = coordinates.getX();
-        this.y = coordinates.getY();
-    }
 
     public int getX() {
         return x;
@@ -30,51 +26,55 @@ public class Player {
         return y;
     }
 
+    public boolean checkIfNextIsWall(Board board, int num, int num2) {
+        return board.getSquare(x + num, y + num2).getSquare().equals(Icon.WALL_CELL.getIcon());
+
+    }
+
     public void moveUp(Board board) {
         if (x - 1 < 0) { 
             return;
-        }
-        else if (board.getSquare(x - 1, y).getSquare().equals(" # ")) {
+        } 
+        else if (checkIfNextIsWall(board, - 1, 0)) {
             return;
         } else {
-            move(new Coordinates(x - 1, y));
+            x -= 1;
         }
     }
 
     public void moveDown(Board board) {
         if (x + 1 >= 20) {
             return;
-        }
-        else if (board.getSquare(x + 1, y).getSquare().equals(" # ")) {
+        } 
+        else if (checkIfNextIsWall(board, 1, 0)) {
             return;
         } 
         else {
-            move(new Coordinates(x + 1, y));
+            x += 1;
         }
-        // int a = Player.x + 1 >= 20 ? break : Player.move(new Coordinates(Player.x + 1, Player.y));
     }
 
     public void moveLeft(Board board) {
         if (y - 1 < 0) {
             return;
-        }
-        else if (board.getSquare(x, y - 1).getSquare().equals(" # ")) {
+        } 
+        else if (checkIfNextIsWall(board, 0, - 1)) {
             return;
         } 
         else {
-            move(new Coordinates(x, y - 1));
+            y -= 1;
         }
     }
 
     public void moveRight(Board board) {
         if (y + 1 >= 20) {
             return;
-        }
-        else if (board.getSquare(x, y + 1).getSquare().equals(" # ")) {
+        } 
+        else if (checkIfNextIsWall(board, 0, 1)) {
             return;
         }  
         else {
-            move(new Coordinates(x, y + 1));
+            y += 1;
         }
     }
 
