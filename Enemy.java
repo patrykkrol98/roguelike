@@ -12,10 +12,6 @@ public class Enemy extends Coordinates {
 
     }
 
-    public void setOnBoard(Board board) {
-        board.setCoordinates(this.x, this.y); // TODO: change it 
-    }
-
     boolean horizontalDirection = true;
 
     public void walkHorizontal(Board board) {
@@ -23,9 +19,8 @@ public class Enemy extends Coordinates {
     }
 
     private boolean walkRight(Board board) {
-        Coordinates[][] gameBoard = board.getGameBoard();
         try {
-            if (!(gameBoard[getX()][getY() + 1] instanceof Collidable)) {
+            if (!(board.getCoordinates(getX(), getY() + 1) instanceof Collidable)) {
                 setY(getY() + 1);
                 return true;
             } else {
@@ -37,9 +32,8 @@ public class Enemy extends Coordinates {
     }
 
     private boolean walkLeft(Board board) {
-        Coordinates[][] gameBoard = board.getGameBoard();
         try {
-        if (!(gameBoard[getX()][getY() - 1] instanceof Collidable)) {
+        if (!(board.getCoordinates(getX(), getY() - 1) instanceof Collidable)) {
             setY(getY() - 1);
             return false;
         } else {
@@ -56,8 +50,7 @@ public class Enemy extends Coordinates {
     }
 
     private boolean walkUp(Board board) {
-        Coordinates[][] gameBoard = board.getGameBoard();
-        if (!(gameBoard[getX()][getY() - 1] instanceof Collidable)) {
+        if (!(board.getCoordinates(getX(), getY() - 1) instanceof Collidable)) {
             setY(getY() - 1);
             return true;
         } else {
@@ -66,8 +59,7 @@ public class Enemy extends Coordinates {
     }
 
     private boolean walkDown(Board board) {
-        Coordinates[][] gameBoard = board.getGameBoard();
-        if (!(gameBoard[getX()][getY() + 1] instanceof Collidable)) {
+        if (!(board.getCoordinates(getX(), getY() + 1) instanceof Collidable)) {
             setY(getY() + 1);
             return false;
         } else {

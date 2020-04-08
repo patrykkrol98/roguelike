@@ -13,7 +13,7 @@ class Game extends KeyAdapter {
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         // System.out.println(board);
-        //enemy.setOnBoard(board);
+        board.setSomethingOnBoard(enemy.getX(), enemy.getY(), enemy);
         switch(ch) {
             case 'w':
                 // player.moveUp(board);
