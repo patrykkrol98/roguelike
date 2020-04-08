@@ -1,15 +1,17 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private String name;
-    // private List<Item> items;
+    private String name;  
     private Coordinates position = new Coordinates(10, 10);
     private int x = 10, y = 10;
-    private int health;
-    private int attack;
-    // private String PlayerIcon = " @ ";
+    public Inventory inventory;
+    public Stats stats;
 
+    public Player(){
+        this.stats = new Stats();
+    }
     // public Player(String name, Coordinates coo) {
     //     this.name = name;
     //     health = 100;

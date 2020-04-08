@@ -2,7 +2,8 @@ public enum Icon {
     WALL_CELL(" # "),
     EMPTY(" . "),
     PLAYER(" @ "),
-    COIN(" $ ");
+    COIN(" $ "),
+    STRENGTH_POTION(" * ");
     // inne ktorych uzywamy
     
     public final String icon;
