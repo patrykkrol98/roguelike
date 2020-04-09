@@ -31,13 +31,8 @@ class Board {
         return gameBoard;
     }
 
-<<<<<<< HEAD
-    public void setSomethingOnBoard(int x, int y, Coordinates object) {
-        gameBoard[x][y] = object;
-=======
     public void setSomethingOnBoard( Coordinates type) {
         gameBoard[type.getX()][type.getY()] = type;
->>>>>>> 067382ad5c6a1a6870f1cfe439ec2ecafeac89a0
     }
 
     public Coordinates getCoordinates(int row, int column) {
