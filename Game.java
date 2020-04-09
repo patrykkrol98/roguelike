@@ -13,8 +13,8 @@ class Game extends KeyAdapter {
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         // System.out.println(board);
-        board.setSomethingOnBoard(enemyOne.getX(), enemyOne.getY(), enemyOne);
-        board.setSomethingOnBoard(enemyTwo.getX(), enemyTwo.getY(), enemyTwo);
+        board.setSomethingOnBoard(enemyOne);
+        board.setSomethingOnBoard(enemyTwo);
         switch(ch) {
             case 'w':
                 if (!(board.getCoordinates(player.getX() - 1, player.getY()) instanceof Collidable)) {
