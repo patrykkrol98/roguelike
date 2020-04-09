@@ -3,9 +3,8 @@ public class Weapon extends Item
     public int damage;
     public int strength;
     
-    public Weapon(Coordinates coordinate) {
-        super(coordinate);
-
+    public Weapon(int x, int y) {
+        super(x, y);
     }
    
    

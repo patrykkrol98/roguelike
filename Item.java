@@ -1,12 +1,13 @@
-abstract class Item {
-    protected Icon icon;
-    protected String name;
-    protected String tooltip;
-    protected Color color;
-    private Coordinates coordinate;
+abstract class Item extends Coordinates {
+     protected String icon;
+     protected String name;
+     protected String tooltip;
+     protected Color color;
+     
+     public Item(int x, int y) {
+          super(x, y);
+
+     }
+}   
    
-   public Item(Coordinates coordinate)
-   {
-        this.coordinate = coordinate;
-   }
-}
+

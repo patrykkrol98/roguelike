@@ -1,7 +1,7 @@
 public class HealthPotion extends Item {
-        public HealthPotion(Coordinates coordinate) {
-            super(coordinate);
-            this.icon = Icon.STRENGTH_POTION;
+        public HealthPotion(int x, int y) {
+            super(x, y);
+            this.icon = Icon.STRENGTH_POTION.getIcon();
             this.name = "Health Potion";
             this.tooltip = "Increases your health!";
         }
