@@ -1,10 +1,14 @@
 public class Enemy extends Coordinates {
     private final String state = Icon.ENEMY.getIcon();
-    private Stats stats;
+    protected Stats stats;
 
     public Enemy(int health, int attack, int x, int y) {
         super(x, y);
         this.stats = new Stats(health, attack, 0);
+    }
+    public void attack(Player player) {
+        player.stats.health -= this.stats.strength;
+        this.stats.health -= player.stats.strength;
     }
 
     private boolean horizontalDirection = true;
