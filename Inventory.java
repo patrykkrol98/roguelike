@@ -4,14 +4,15 @@ public class Inventory
 {
    /* List of items in the inventory, size cannot exceed max */
    private List<Item> items;
-   private int max;
-   private CommandLineTable inventoryTable;
+   public int max;
+   private CommandLineTable inventoryTable = new CommandLineTable();
    
    public Inventory(int max)
    {
       this.items = new ArrayList<Item>();
       this.max = max;
       inventoryTable.setHeaders("ID", "Item", "Icon", "Attribiutes");
+      inventoryTable.setShowVerticalLines(true);
    }
    
    

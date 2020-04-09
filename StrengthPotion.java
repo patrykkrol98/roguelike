@@ -9,6 +9,7 @@ public class StrengthPotion extends Item {
     public void use(Player player) {
         player.stats.strength += 1;
         player.inventory.remove(this);
+
     }
 
     @Override

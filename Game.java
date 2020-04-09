@@ -3,7 +3,6 @@ import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     Player player = new Player(10, 10);
-    
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -37,11 +36,12 @@ class Game extends KeyAdapter {
                 break;
 
         }
-        player.stats.print_character();
-        board.setSomethingOnBoard(new StrengthPotion(1, 1));
+        // player.stats.print_character(); TODO uncomment o print stats and inv
+        // board.setSomethingOnBoard(new StrengthPotion(1, 1));
         board.setSomethingOnBoard(player);
         System.out.println(board);
-
+        // System.out.println("Max carry: " + player.inventory.max);
+        // player.inventory.drawInventory(); TODO uncomment
     }
 
     public static void clearScreen() {
