@@ -1,13 +1,14 @@
 public class Weapon extends Item
 {
     public int damage;
-    public int strength;
+    public int strength = 5;
     
     public Weapon(int x, int y) {
         super(x, y);
+        this.icon = Icon.WEAPON.getIcon();
+        this.name = "Sword";
+        this.tooltip = "Increases your attack!";
     }
-   
-   
    
    public void use(Player player)
    {
@@ -18,12 +19,12 @@ public class Weapon extends Item
       }
       else
       {
-        //  Item previouslyEquipped = player.equipSword; 
-        //  player.equipSword = this; 
-        //  player.inventory.remove(this); 
-        //  if (previouslyEquipped != null) 
-        //     player.inventory.add(previouslyEquipped); 
+       player.stats.attack += 20;
       }
    }
+   @Override
+    public String toString() {
+        return this.icon;
+    }
 }
    

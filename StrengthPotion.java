@@ -1,4 +1,4 @@
-public class StrengthPotion extends Item {
+public class StrengthPotion extends Item{
     public StrengthPotion(int x, int y) {
         super(x, y);
         this.icon = Icon.STRENGTH_POTION.getIcon();
@@ -7,9 +7,8 @@ public class StrengthPotion extends Item {
     }
 
     public void use(Player player) {
-        player.stats.strength += 1;
+        player.stats.strength += 10;
         player.inventory.remove(this);
-
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Inventory
    {
       this.items = new ArrayList<Item>();
       this.max = max;
-      inventoryTable.setHeaders("ID", "Item", "Icon", "Attribiutes");
+      inventoryTable.setHeaders("Idx", "Item", "Icon", "Attribiutes");
       inventoryTable.setShowVerticalLines(true);
    }
    
@@ -26,9 +26,14 @@ public class Inventory
       if (this.items.size() < this.max)
       {
          items.add(item);
+         inventoryTable.addRow(Integer.toString(items.size()), item.name, item.icon, item.tooltip);
          return true;
       }
       return false;
+   }
+   
+   public CommandLineTable getTable(){
+      return inventoryTable;
    }
    
    public void remove(Item item)

@@ -28,6 +28,9 @@ public class CommandLineTable {
         this.headers = headers;
     }
 
+    public void removeRow(int index){
+        rows.remove(index);
+    }
     public void addRow(String... cells) {
         rows.add(cells);
     }
