@@ -1,18 +1,22 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class Game extends KeyAdapter {
     Player player = new Player(10, 10);
     Enemy enemyOne = new Enemy(100, 10, 5, 5);
     Enemy enemyTwo = new Enemy(50, 5, 12, 12);
     ArrayList<Item> BoardItems = new ArrayList<>();
+    int obstaclesNumber = 0;
+    int playerMoves = 0;
+    int[] movesToNewObstacle = {5, 10, 15 ,20, 25, 30, 35};
     
     @Override
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
-        Board board = new Board(player.getX(), player.getY(), player);
-        Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
+        Board board = new Board(player.getX(), player.getY(), player, ObstacleList.getObstacles());
+        // Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         createItems();
         board.setSomethingOnBoard(enemyOne);
@@ -57,6 +61,17 @@ class Game extends KeyAdapter {
         }
         player.stats.print_character();// TODO uncomment o print stats and inv
         board.setSomethingOnBoard(player);
+        if (contains(movesToNewObstacle, playerMoves)) {
+            Obstacle obstacle = new Obstacle(20, 20, board);
+            ObstacleList.addObstacleToList(obstacle);
+        }
+        // if (obstaclesNumber < 5) {
+        //     Obstacle obstacle = new Obstacle(20, 20, board);
+        //     ObstacleList.addObstacleToList(obstacle);
+        //     obstaclesNumber++; 
+        // }
+        playerMoves++;
+        
         System.out.println(board);
         System.out.println("Max carry: " + player.inventory.max);
         player.inventory.drawInventory();// TODO uncomment
@@ -106,5 +121,16 @@ class Game extends KeyAdapter {
     private void enemyMovement(Board board) {
         enemyOne.walkHorizontal(board);
         enemyTwo.walkVertically(board);
+    }
+
+    public static boolean contains(int[] array, int v) {
+        boolean result = false;
+        for (int i : array) {
+            if (i == v) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 }
