@@ -12,7 +12,7 @@ public class Enemy extends Coordinates {
 
     }
 
-    boolean horizontalDirection = true;
+    private boolean horizontalDirection = true;
 
     public void walkHorizontal(Board board) {
         horizontalDirection = horizontalDirection ? walkRight(board) : walkLeft(board);
@@ -33,25 +33,26 @@ public class Enemy extends Coordinates {
 
     private boolean walkLeft(Board board) {
         try {
-        if (!(board.getCoordinates(getX(), getY() - 1) instanceof Collidable)) {
-            setY(getY() - 1);
-            return false;
-        } else {
+            if (!(board.getCoordinates(getX(), getY() - 1) instanceof Collidable)) {
+                setY(getY() - 1);
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e) {
             return true;
         }
-    } catch (Exception e) {
-        return true;
     }
-}
+
+    private boolean vertivalDirection = true;
 
     public void walkVertically(Board board) {
-        boolean vertivalDirection = true;
         vertivalDirection = vertivalDirection ? walkUp(board) : walkDown(board);
     }
 
     private boolean walkUp(Board board) {
-        if (!(board.getCoordinates(getX(), getY() - 1) instanceof Collidable)) {
-            setY(getY() - 1);
+        if (!(board.getCoordinates(getX() - 1, getY()) instanceof Collidable)) {
+            setX(getX() - 1);
             return true;
         } else {
             return false;
@@ -59,13 +60,14 @@ public class Enemy extends Coordinates {
     }
 
     private boolean walkDown(Board board) {
-        if (!(board.getCoordinates(getX(), getY() + 1) instanceof Collidable)) {
-            setY(getY() + 1);
+        if (!(board.getCoordinates(getX() + 1, getY()) instanceof Collidable)) {
+            setX(getX() + 1);
             return false;
         } else {
             return true;
         }
     }
+
     @Override
     public String toString() {
         return state;

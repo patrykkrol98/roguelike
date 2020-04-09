@@ -20,7 +20,7 @@ class Game extends KeyAdapter {
                 if (!(board.getCoordinates(player.getX() - 1, player.getY()) instanceof Collidable)) {
                     player.move(-1, 0);
                 }
-                enemy.walkHorizontal(board);
+                enemy.walkVertically(board);
                 break;
 
             case 's':
