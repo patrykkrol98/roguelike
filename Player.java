@@ -1,17 +1,19 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends Coordinates implements Collidable {
-    // private String name;
-    // private List<Item> items;
+    private String name;
     private final String state = Icon.PLAYER.getIcon();
-    private int health;
-    private int attack;
+    protected Inventory inventory;
+    protected Stats stats;
 
     public Player(int startX, int startY) {
         super(startX, startY);
-        health = 100;
-        attack = 50;
+        Game.clearScreen();
+        this.name = InputProvider.getString("What's your name?: ");
+        this.stats = new Stats(); 
+        this.inventory = new Inventory(this.stats.strength);
     }
 
     public void move(int x, int y) {
@@ -23,4 +25,5 @@ public class Player extends Coordinates implements Collidable {
     public String toString() {
         return state;
     }
+
 }

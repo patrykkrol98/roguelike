@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Obstacle {
+public class Obstacle implements Collidable {
     private ArrayList<WallCell> obstacleCoordinates;
     private Random random = new Random();
 
@@ -12,7 +12,7 @@ public class Obstacle {
         while (isRunning) {
             // boolean isValid = true;
             int startingX = 1 + random.nextInt(15), startingY = 1 + random.nextInt(15)
-            , shapeLength = 1 + random.nextInt(3), shapeHeigth = 1 + random.nextInt(3);
+            , shapeLength = 1 + random.nextInt(4), shapeHeigth = 1 + random.nextInt(4);
 
             
             for (int i = startingX; i < shapeLength + startingX; i++) {
@@ -35,15 +35,15 @@ public class Obstacle {
             boolean isValid = obstacleValidator();
             if (isValid) {
                 int cornersBeforeAndAfterObstacle = 2;
-                for (int inRow = 0; inRow < shapeHeigth + 2; inRow++) {
+                for (int inRow = 0; inRow < shapeHeigth + cornersBeforeAndAfterObstacle; inRow++) {
                     ObstacleList.addIllegalFields(new Coordinates(startingX - 1, startingY - 1 + inRow));
                     ObstacleList.addIllegalFields(new Coordinates(startingX + shapeHeigth, startingY - 1 + inRow));
-                    System.out.println("row");
+                    // System.out.println("row");
                 }
                 for (int inColumn = 0; inColumn < shapeLength; inColumn++) {
                     ObstacleList.addIllegalFields(new Coordinates(startingX + inColumn, startingY - 1));
                     ObstacleList.addIllegalFields(new Coordinates(startingX + inColumn, startingY + shapeLength));
-                    System.out.println("column");
+                    // System.out.println("column");
                 }
 
                 // for (int i = startingX; i < shapeLength + startingX; i++) {
@@ -69,7 +69,7 @@ public class Obstacle {
         for (WallCell coordinates : obstacleCoordinates) { //dla kazdej coordynaty w danej przeszkodzie
             for (Obstacle obstacle : ObstacleList.getObstacles()) { //dla kazdej przeszkody
                 for (WallCell cell : obstacle.getObstacle()) { // dla kazdej coordynaty w danej przeszkodzie
-                    System.out.println("spr1");
+                    // System.out.println("spr1");
                     if (coordinates.getX() == cell.getX() && coordinates.getY() == cell.getY()) {
                         isObstacleListValid = false;
                     }
@@ -79,7 +79,7 @@ public class Obstacle {
         if (isObstacleListValid) {
             for (WallCell cell : obstacleCoordinates) { //sprawdzam w zajetych polach czyli tych do okola aktualnych przeszkod
                 for (Coordinates coordinates : ObstacleList.getIllegalFields()) {
-                    System.out.println("spr2");
+                    // System.out.println("spr2");
                     if (cell.getX() == coordinates.getX() && cell.getY() == coordinates.getY()) {
                         isIllegalFieldsValid = false;
                     }

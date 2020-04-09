@@ -42,8 +42,8 @@ class Board {
         return gameBoard;
     }
 
-    public void setSomethingOnBoard(int x, int y, Coordinates type) {
-        gameBoard[x][y] = type;
+    public void setSomethingOnBoard( Coordinates type) {
+        gameBoard[type.getX()][type.getY()] = type;
     }
 
     public Coordinates getCoordinates(int row, int column) {

@@ -2,7 +2,13 @@ public enum Icon {
     WALL_CELL(" # "),
     EMPTY(" . "),
     PLAYER(" @ "),
-    COIN(" $ ");
+    COIN(" $ "),
+    ENEMY(" Ω "),
+    STRENGTH_POTION(" 🍼"),
+    HEALTH_POTION(" 🍺"),
+    FOOD(" 🍗"),
+    WEAPON(" 🔪")
+    ;
     // inne ktorych uzywamy
     
     public final String icon;
