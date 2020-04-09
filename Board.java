@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 class Board {
     private Coordinates[][] gameBoard;
     private int rows = 20, columns = 20;
     
-    public Board(int playerX, int playerY, Player player) {
+    public Board(int playerX, int playerY, Player player,  ArrayList<Obstacle> obstacles) {
         // Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
         gameBoard = new Coordinates[rows][columns];
         
@@ -20,6 +22,15 @@ class Board {
         for (int footer = 0; footer < columns; footer++) {
             gameBoard[rows - 1][footer] = new WallCell(rows - 1, footer);
         }
+
+        if (obstacles.size() > 0) {
+            for (Obstacle obstacle : obstacles) {
+                for (WallCell wallCell : obstacle.getObstacle()) {
+                    gameBoard[wallCell.getX()][wallCell.getY()] = new WallCell(wallCell.getX(), wallCell.getY());
+                }
+            }
+        }
+        
         // gameBoard[playerX][playerY] = player;
 
         // for (Coordinates Coordinates : Obstacle.getObstacle()) { // dodawanie przeszkod nastepny for innych rodzajow czy wrogow lub przy pomocy interfejsow

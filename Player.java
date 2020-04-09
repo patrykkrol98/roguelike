@@ -1,7 +1,7 @@
 
 import java.util.List;
 
-public class Player extends Coordinates {
+public class Player extends Coordinates implements Collidable {
     // private String name;
     // private List<Item> items;
     private final String state = Icon.PLAYER.getIcon();

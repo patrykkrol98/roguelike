@@ -8,8 +8,8 @@ class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
         // System.out.println((int)ch);
-        Board board = new Board(player.getX(), player.getY(), player);
-        Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
+        Board board = new Board(player.getX(), player.getY(), player, ObstacleList.getObstacles());
+        // Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         // System.out.println(board);
 
@@ -44,7 +44,9 @@ class Game extends KeyAdapter {
 
         }
         // board.setSquare(player.getX(), player.getY(), Icon.PLAYER);
-        board.setSomethingOnBoard(player.getX(), player.getY(), player); 
+        board.setSomethingOnBoard(player.getX(), player.getY(), player);
+        Obstacle obstacle = new Obstacle(20, 20, board); //
+        ObstacleList.addObstacleToList(obstacle); //
         System.out.println(board);
         // System.out.println(player);
     }
