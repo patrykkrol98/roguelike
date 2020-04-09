@@ -3,7 +3,8 @@ import java.awt.event.KeyEvent;
 
 class Game extends KeyAdapter {
     Player player = new Player(10, 10);
-    Enemy enemy = new Enemy("Orc", 100, 10, 5, 5);
+    Enemy enemyOne = new Enemy(100, 10, 5, 5);
+    Enemy enemyTwo = new Enemy(50, 5, 12, 12);
     
     @Override
     public void keyPressed(KeyEvent event) {
@@ -13,14 +14,15 @@ class Game extends KeyAdapter {
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         // System.out.println(board);
-        board.setSomethingOnBoard(enemy.getX(), enemy.getY(), enemy);
+        board.setSomethingOnBoard(enemyOne.getX(), enemyOne.getY(), enemyOne);
+        board.setSomethingOnBoard(enemyTwo.getX(), enemyTwo.getY(), enemyTwo);
         switch(ch) {
             case 'w':
                 // player.moveUp(board);
                 if (!(board.getCoordinates(player.getX() - 1, player.getY()) instanceof Collidable)) {
                     player.move(-1, 0);
                 }
-                enemy.walkVertically(board);
+                enemyMovement(board);
                 break;
 
             case 's':
@@ -28,7 +30,7 @@ class Game extends KeyAdapter {
                 if (!(board.getCoordinates(player.getX() + 1, player.getY()) instanceof Collidable)) {
                     player.move(1, 0);
                 }
-                enemy.walkHorizontal(board);
+                enemyMovement(board);
                 break;
 
             case 'a':
@@ -36,7 +38,7 @@ class Game extends KeyAdapter {
                 if (!(board.getCoordinates(player.getX(), player.getY() - 1) instanceof Collidable)) {
                     player.move(0, -1);
                 }
-                enemy.walkHorizontal(board);
+                enemyMovement(board);
                 break;
 
             case 'd':
@@ -44,7 +46,7 @@ class Game extends KeyAdapter {
                 if (!(board.getCoordinates(player.getX(), player.getY() + 1) instanceof Collidable)) {
                     player.move(0, 1);
                 }
-                enemy.walkHorizontal(board);
+                enemyMovement(board);
                 break;
 
         }
@@ -59,5 +61,9 @@ class Game extends KeyAdapter {
         System. out. print("\033[H\033[2J");
         System. out. flush();
         }
+    private void enemyMovement(Board board
+        enemyOne.walkHorizontal(board);
+        enemyTwo.walkVertically(board);
+    }
 }
 
