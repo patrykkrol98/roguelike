@@ -11,4 +11,12 @@ public class ObstacleList {
     public static ArrayList<Obstacle> getObstacles() {
         return obstacles;
     }
+
+    public static void addIllegalFields(Coordinates coordinates) {
+        illegalFields.add(coordinates);
+    }
+
+    public static ArrayList<Coordinates> getIllegalFields() {
+        return illegalFields;
+    }
 }
