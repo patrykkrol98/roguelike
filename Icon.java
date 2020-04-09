@@ -4,7 +4,11 @@ public enum Icon {
     PLAYER(" @ "),
     COIN(" $ "),
     ENEMY(" Ω "),
-    STRENGTH_POTION(" * ");
+    STRENGTH_POTION(" 🍼"),
+    HEALTH_POTION(" 🍺"),
+    FOOD(" 🍗"),
+    WEAPON(" 🔪")
+    ;
     // inne ktorych uzywamy
     
     public final String icon;

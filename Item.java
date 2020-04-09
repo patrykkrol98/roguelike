@@ -1,4 +1,4 @@
-abstract class Item extends Coordinates {
+abstract class Item extends Coordinates implements Collectable {
      protected String icon;
      protected String name;
      protected String tooltip;
@@ -6,7 +6,9 @@ abstract class Item extends Coordinates {
      
      public Item(int x, int y) {
           super(x, y);
+     }
 
+     public void use(Player player) {
      }
 }   
    

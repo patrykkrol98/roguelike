@@ -2,19 +2,19 @@
 public class Stats {
     public int health = 0;
     public int strength = 0;
-    public int speech = 0;
+    public int attack = 0;
     public int availablePoints = 50;
 
-    Stats(int health, int strenght, int speech) {
+    Stats(int health, int strenght, int attack) {
         this.health = health;
         this.strength = strenght;
-        this.speech = speech;
+        this.attack = attack;
     }
 
     Stats() {
         boolean isRunning = true;
         while (isRunning) {
-            System.err.println("Create a character! You have points to assign to strength, health, and speech.");
+            System.err.println("Create a character! You have points to assign to strength, health, and attack.");
             print_character();
             System.out.println("\nYou have " + this.availablePoints + " points left.\n");
             System.out.println("1. Add points\n2. Remove points\n3. See current attributes\n4. Play!\n");
@@ -51,7 +51,7 @@ public class Stats {
         int value;
         Game.clearScreen();
         System.err.println("Which point you want to add?");
-        System.out.println("1. Health\n2. Strength\n3. Speech\n4. Back\n");
+        System.out.println("1. Health\n2. Strength\n3. Attack\n4. Back\n");
             switch (InputProvider.getInt("Choice to add:")) {
                 case 1:
                     value = getValue();
@@ -76,7 +76,7 @@ public class Stats {
                 case 3:
                     value = getValue();
                     if(value <= availablePoints){
-                        this.speech += value;
+                        this.attack += value;
                         availablePoints -= value;
                     }
                     else{
@@ -96,7 +96,7 @@ public class Stats {
         int value;
         Game.clearScreen();
         System.err.println("Which point you want to remove?");
-        System.out.println("1. Health\n2. Strength\n3. Speech\n4. Back\n");
+        System.out.println("1. Health\n2. Strength\n3. attack\n4. Back\n");
             switch (InputProvider.getInt("Choice to remove: ")) {
                 case 1:
                     value = getValue();
@@ -120,8 +120,8 @@ public class Stats {
                     break;
                 case 3:
                     value = getValue();
-                    if(value <= this.speech){
-                        this.speech -= value;
+                    if(value <= this.attack){
+                        this.attack -= value;
                         availablePoints += value;
                     }
                     else{
@@ -146,7 +146,7 @@ public class Stats {
         System.out.println(
             "\nHealth: " + this.health +
             "\nStregth: " + this.strength +
-            "\nSpeech: " + this.speech          
+            "\nAttack: " + this.attack          
         );
     }
 

@@ -11,9 +11,9 @@ public class Player extends Coordinates implements Collidable {
     public Player(int startX, int startY) {
         super(startX, startY);
         Game.clearScreen();
-        // this.name = InputProvider.getString("What's your name?: ");
-        // this.stats = new Stats(); // TODO: uncomment to create stats and inv
-        // this.inventory = new Inventory(this.stats.strength);
+        this.name = InputProvider.getString("What's your name?: ");
+        this.stats = new Stats(); 
+        this.inventory = new Inventory(this.stats.strength);
     }
 
     public void move(int x, int y) {
