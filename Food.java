@@ -1,7 +1,7 @@
 public class Food extends Item {
-    public Food(Coordinates coordinate) {
-        super(coordinate);
-        this.icon = Icon.STRENGTH_POTION;
+    public Food(int x, int y) {
+        super(x, y);
+        this.icon = Icon.STRENGTH_POTION.getIcon();
         this.name = "Food";
         this.tooltip = "Increases your health!";
     }

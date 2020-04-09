@@ -1,7 +1,7 @@
 public class StrengthPotion extends Item {
-    public StrengthPotion(Coordinates coordinate) {
-        super(coordinate);
-        this.icon = Icon.STRENGTH_POTION;
+    public StrengthPotion(int x, int y) {
+        super(x, y);
+        this.icon = Icon.STRENGTH_POTION.getIcon();
         this.name = "Strength Potion";
         this.tooltip = "Increases your strengh!";
     }
@@ -9,6 +9,11 @@ public class StrengthPotion extends Item {
     public void use(Player player) {
         player.stats.strength += 1;
         player.inventory.remove(this);
+    }
+
+    @Override
+    public String toString() {
+        return this.icon;
     }
 
 }

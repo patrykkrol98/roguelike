@@ -3,7 +3,7 @@ class Board {
     private int rows = 20, columns = 20;
     
     public Board(int playerX, int playerY, Player player) {
-        Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
+        // Obstacle.addObstacle(5, 5);// testowo dodane na potzrby sprawdzenia dzialania
         gameBoard = new Coordinates[rows][columns];
         
         for (int header = 0; header < columns; header++) { // tworzenie headera z obiektow typu WallCell
@@ -31,12 +31,8 @@ class Board {
         return gameBoard;
     }
 
-    public void setPlayerOnBoard(int playerX, int playerY, Player player) {
-        gameBoard[playerX][playerY] = player;
-    }
-
-    public void setCoordinates(int row, int column, Icon icon) {
-        gameBoard[row][column] = new Coordinates(row, column);
+    public void setSomethingOnBoard( Coordinates type) {
+        gameBoard[type.getX()][type.getY()] = type;
     }
 
     public Coordinates getCoordinates(int row, int column) {
