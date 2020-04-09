@@ -37,6 +37,7 @@ class Game extends KeyAdapter {
                 break;
 
         }
+        player.stats.print_character();
         board.setSomethingOnBoard(new StrengthPotion(1, 1));
         board.setSomethingOnBoard(player);
         System.out.println(board);

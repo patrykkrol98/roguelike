@@ -11,6 +11,7 @@ public class Player extends Coordinates {
 
     public Player(int startX, int startY) {
         super(startX, startY);
+        this.stats = new Stats();
     }
 
     public void move(int x, int y) {

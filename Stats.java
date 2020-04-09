@@ -16,6 +16,7 @@ public class Stats {
         while (isRunning) {
             System.err.println("Create a character! You have points to assign to strength, health, and speech.");
             print_character();
+            System.out.println("\nYou have " + this.availablePoints + " points left.\n");
             System.out.println("1. Add points\n2. Remove points\n3. See current attributes\n4. Play!\n");
             switch (InputProvider.getInt("Choice:")) {
                 case 1:
@@ -36,6 +37,7 @@ public class Stats {
                     break;
                 case 3:
                     print_character();
+                    System.out.println("\nYou have " + this.availablePoints + " points left.\n");
                     break;
                 case 4:
                     isRunning = false;
@@ -140,12 +142,11 @@ public class Stats {
 
     }
 
-    private void print_character() {
+    public void print_character() {
         System.out.println(
             "\nHealth: " + this.health +
             "\nStregth: " + this.strength +
-            "\nSpeech: " + this.speech +
-            "\nYou have " + this.availablePoints + " points left.\n"
+            "\nSpeech: " + this.speech          
         );
     }
 
