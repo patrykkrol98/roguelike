@@ -1,6 +1,6 @@
 public class Enemy extends Coordinates {
     private final String state = Icon.ENEMY.getIcon();
-    private Stats stats;
+    protected Stats stats;
 
     public Enemy(int health, int attack, int x, int y) {
         super(x, y);
