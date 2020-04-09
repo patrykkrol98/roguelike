@@ -9,7 +9,6 @@ class Game extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
-        // System.out.println((int)ch);
         Board board = new Board(player.getX(), player.getY(), player);
         Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
@@ -18,7 +17,6 @@ class Game extends KeyAdapter {
         board.setSomethingOnBoard(enemyTwo.getX(), enemyTwo.getY(), enemyTwo);
         switch(ch) {
             case 'w':
-                // player.moveUp(board);
                 if (!(board.getCoordinates(player.getX() - 1, player.getY()) instanceof Collidable)) {
                     player.move(-1, 0);
                 }
@@ -26,7 +24,6 @@ class Game extends KeyAdapter {
                 break;
 
             case 's':
-                // player.moveDown(board);
                 if (!(board.getCoordinates(player.getX() + 1, player.getY()) instanceof Collidable)) {
                     player.move(1, 0);
                 }
@@ -34,7 +31,6 @@ class Game extends KeyAdapter {
                 break;
 
             case 'a':
-                // player.moveLeft(board);
                 if (!(board.getCoordinates(player.getX(), player.getY() - 1) instanceof Collidable)) {
                     player.move(0, -1);
                 }
@@ -42,7 +38,6 @@ class Game extends KeyAdapter {
                 break;
 
             case 'd':
-                // player.moveRight(board);
                 if (!(board.getCoordinates(player.getX(), player.getY() + 1) instanceof Collidable)) {
                     player.move(0, 1);
                 }
@@ -50,20 +45,21 @@ class Game extends KeyAdapter {
                 break;
 
         }
+        // player.stats.print_character(); TODO uncomment o print stats and inv
+        // board.setSomethingOnBoard(new StrengthPotion(1, 1));
+        board.setSomethingOnBoard(player);
         System.out.println(board);
-        // board.setSquare(player.getX(), player.getY(), Icon.PLAYER);
-        board.setSomethingOnBoard(player.getX(), player.getY(), player); 
-        System.out.println(board);
-        // System.out.println(player);
+        // System.out.println("Max carry: " + player.inventory.max);
+        // player.inventory.drawInventory(); TODO uncomment
     }
 
     public static void clearScreen() {
         System. out. print("\033[H\033[2J");
         System. out. flush();
         }
-    private void enemyMovement(Board board
+
+    private void enemyMovement(Board board) {
         enemyOne.walkHorizontal(board);
         enemyTwo.walkVertically(board);
     }
 }
-

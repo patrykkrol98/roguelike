@@ -3,7 +3,8 @@ public enum Icon {
     EMPTY(" . "),
     PLAYER(" @ "),
     COIN(" $ "),
-    ENEMY(" Ω ");
+    ENEMY(" Ω "),
+    STRENGTH_POTION(" * ");
     // inne ktorych uzywamy
     
     public final String icon;
