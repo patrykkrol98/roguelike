@@ -36,5 +36,4 @@ public class InputProvider {
         System.out.print(prompt);
         return sc.next();
     }
-
 }
