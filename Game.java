@@ -10,6 +10,7 @@ class Game extends KeyAdapter {
     Enemy enemyOne = new Enemy(20, 10, 5, 5);
     Enemy enemyTwo = new Enemy(50, 5, 12, 12);
     ArrayList<Item> BoardItems = new ArrayList<>();
+    List<Enemy> enemies = createEnemiesList();
     int obstaclesNumber = 0;
     int playerMoves = 0;
     int[] movesToNewObstacle = { 5, 10, 15, 20, 25, 30, 35 };
@@ -18,14 +19,10 @@ class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
         Board board = new Board(player.getX(), player.getY(), player, ObstacleList.getObstacles());
-        // Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         createItems();
         ItemProvider(board);
-        // System.out.println(board);
-        List<Enemy> enemies = createEnemiesList();
         setEnemiesOnBoard(enemies, board);
-        board.setSomethingOnBoard(player);
         switch (ch) {
             case 'w':
                 if (!(board.getCoordinates(player.getX() - 1, player.getY()) instanceof Collidable)) {
@@ -62,19 +59,13 @@ class Game extends KeyAdapter {
                 player.inventory.getTable().removeRow(index - 1);
 
         }
+        board.setSomethingOnBoard(player);
         player.stats.print_character();
-        // board.setSomethingOnBoard(player);
         if (contains(movesToNewObstacle, playerMoves)) {
             Obstacle obstacle = new Obstacle(20, 20, board);
             ObstacleList.addObstacleToList(obstacle);
         }
-        // if (obstaclesNumber < 5) {
-        // Obstacle obstacle = new Obstacle(20, 20, board);
-        // ObstacleList.addObstacleToList(obstacle);
-        // obstaclesNumber++;
-        // }
         playerMoves++;
-
         System.out.println(board);
         System.out.println("Max carry: " + player.inventory.max);
         player.inventory.drawInventory();
