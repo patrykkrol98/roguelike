@@ -15,7 +15,6 @@ public class Inventory
       inventoryTable.setShowVerticalLines(true);
    }
    
-   
    public List<Item> getItems()
    {
       return new ArrayList<Item>(items);
@@ -23,21 +22,20 @@ public class Inventory
    
    public boolean add(Item item)
    {
-      if (this.items.size() < this.max)
-      {
-         items.add(item);
-         inventoryTable.addRow(Integer.toString(items.size()), item.name, item.icon, item.tooltip);
-         return true;
+      if (this.items.size() > this.max) {
+         return false;
       }
-      return false;
+
+      items.add(item);
+      inventoryTable.addRow(Integer.toString(items.size()), item.name, item.icon, item.tooltip);
+      return true;
    }
    
    public CommandLineTable getTable(){
       return inventoryTable;
    }
    
-   public void remove(Item item)
-   {
+   public void remove(Item item) {
       items.remove(item);
    }
    

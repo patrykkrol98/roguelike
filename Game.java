@@ -4,16 +4,20 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-
 class Game extends KeyAdapter {
-    Player player = new Player(10, 10);
-    Enemy enemyOne = new Enemy(20, 10, 5, 5);
-    Enemy enemyTwo = new Enemy(50, 5, 12, 12);
-    ArrayList<Item> BoardItems = new ArrayList<>();
-    List<Enemy> enemies = createEnemiesList();
+    Player player;
+    ArrayList<Item> BoardItems;
+    List<Enemy> enemies;
     int obstaclesNumber = 0;
     int playerMoves = 0;
-    int[] movesToNewObstacle = { 5, 10, 15, 20, 25, 30, 35 };
+    private final int[] movesToNewObstacle = { 5, 10, 15, 20, 25, 30, 35 };
+
+    public Game() {
+        this.player = new Player(10, 10);
+        this.enemies = new ArrayList<Enemy>();
+        this.BoardItems = new ArrayList<>();
+        enemies = createEnemiesList();
+    }
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -81,7 +85,6 @@ class Game extends KeyAdapter {
     }
 
     private void ItemProvider(Board board) {
-
         for (int i = 0; i < BoardItems.size(); i++) {
             if (player.x == BoardItems.get(i).x && player.y == BoardItems.get(i).y) {
                 player.inventory.add(BoardItems.get(i));
@@ -89,14 +92,6 @@ class Game extends KeyAdapter {
             } else {
                 board.setSomethingOnBoard(BoardItems.get(i));
             }
-            // for (Item item : items) { // dlaczego nie dziala?
-            // if (player.x == item.x && player.y == item.y){
-            // player.inventory.add(item);
-            // items.remove(item);
-            // }
-            // else{
-            // board.setSomethingOnBoard(item);
-            // }
         }
     }
 
@@ -106,12 +101,19 @@ class Game extends KeyAdapter {
     }
 
     private void enemyMovement(Board board) {
-        enemyOne.walkHorizontal(board);
-        enemyTwo.walkVertically(board);
+        for (int i =0; i< enemies.size(); i++) {
+            if(i % 2 == 0) {
+                enemies.get(i).walkHorizontal(board);
+                continue;
+            }
+            enemies.get(i).walkVertically(board);
+        }
     }
 
     private List<Enemy> createEnemiesList() {
-        List<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.clear();
+        Enemy enemyOne = new Enemy(20, 10, 5, 5);
+        Enemy enemyTwo = new Enemy(50, 5, 12, 12);
         enemies.add(enemyOne);
         enemies.add(enemyTwo);
         return enemies;
@@ -142,13 +144,11 @@ class Game extends KeyAdapter {
     }
 
     public static boolean contains(int[] array, int v) {
-        boolean result = false;
         for (int i : array) {
             if (i == v) {
-                result = true;
-                break;
+                return true;
             }
         }
-        return result;
+        return false;
     }
 }

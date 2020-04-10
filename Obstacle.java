@@ -4,14 +4,17 @@ import java.util.Random;
 public class Obstacle implements Collidable {
     private ArrayList<WallCell> obstacleCoordinates;
     private Random random = new Random();
+    // Coordinates pivot;
+    // int width, height;
 
     public Obstacle(int rows, int columns, Board board) {
         boolean isRunning = true;
         obstacleCoordinates = new ArrayList<WallCell>();
         while (isRunning) {
-            int startingX = 1 + random.nextInt(15), startingY = 1 + random.nextInt(15)
-            , shapeLength = 1 + random.nextInt(4), shapeHeigth = 1 + random.nextInt(4);
-
+            int startingX = 1 + random.nextInt(15);
+            int startingY = 1 + random.nextInt(15);
+            int shapeLength = 1 + random.nextInt(4); 
+            int shapeHeigth = 1 + random.nextInt(4);
             
             for (int i = startingX; i < shapeLength + startingX; i++) {
                 for (int j = startingY; j < shapeHeigth + startingY; j++) {
@@ -33,10 +36,8 @@ public class Obstacle implements Collidable {
             }
             else {
                 obstacleCoordinates.clear(); 
-            }
-            
-        }
-        
+            }  
+        }  
     }
 
     public boolean obstacleValidator() {
@@ -52,20 +53,19 @@ public class Obstacle implements Collidable {
                 }
             }
         }
-        if (isObstacleListValid) {
-            for (WallCell cell : obstacleCoordinates) { //sprawdzam w zajetych polach czyli tych do okola aktualnych przeszkod
-                for (Coordinates coordinates : ObstacleList.getIllegalFields()) {
-                    if (cell.getX() == coordinates.getX() && cell.getY() == coordinates.getY()) {
-                        isIllegalFieldsValid = false;
-                    }
+        if (!isObstacleListValid) {
+            return isObstacleListValid;
+        }
+
+        for (WallCell cell : obstacleCoordinates) { //sprawdzam w zajetych polach czyli tych do okola aktualnych przeszkod
+            for (Coordinates coordinates : ObstacleList.getIllegalFields()) {
+                if (cell.getX() == coordinates.getX() && cell.getY() == coordinates.getY()) {
+                    isIllegalFieldsValid = false;
                 }
             }
         }
-        else {
-            return isObstacleListValid;
-        }
+
         return isIllegalFieldsValid;
-        
     }
     
     public void addObstacle(int x, int y) {

@@ -15,5 +15,4 @@ public class HealthPotion extends Item {
     public String toString() {
         return this.icon;
     }
-    
 }

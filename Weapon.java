@@ -10,18 +10,15 @@ public class Weapon extends Item
         this.tooltip = "Increases your attack!";
     }
    
-   public void use(Player player)
-   {
-      if (this.strength > player.stats.strength)
-      {
+   public void use(Player player) {
+      if (this.strength > player.stats.strength) {
          System.out.println("This weapons strength requirement (" + this.strength + ") > your strength (" + player.stats.strength + ")!");
          return;
       }
-      else
-      {
-       player.stats.attack += 20;
-      }
+
+        player.stats.attack += 20;
    }
+
    @Override
     public String toString() {
         return this.icon;
