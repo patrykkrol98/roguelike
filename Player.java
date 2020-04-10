@@ -1,7 +1,3 @@
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Player extends Coordinates implements Collidable {
     private String name;
     private final String state = Icon.PLAYER.getIcon();
@@ -12,7 +8,7 @@ public class Player extends Coordinates implements Collidable {
         super(startX, startY);
         Game.clearScreen();
         this.name = InputProvider.getString("What's your name?: ");
-        this.stats = new Stats(); // TODO: uncomment to create stats and inv
+        this.stats = new Stats(); 
         this.inventory = new Inventory(this.stats.strength);
     }
 

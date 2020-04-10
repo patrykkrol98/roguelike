@@ -1,9 +1,9 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.net.http.HttpResponse.BodyHandlers;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
+
 
 class Game extends KeyAdapter {
     Player player = new Player(10, 10);
@@ -21,7 +21,6 @@ class Game extends KeyAdapter {
         // Obstacle.createObstacle();// tutaj tak dla spradzenia na szybko przeszkoda
         clearScreen();
         createItems();
-
         ItemProvider(board);
         // System.out.println(board);
         List<Enemy> enemies = createEnemiesList();
@@ -63,7 +62,7 @@ class Game extends KeyAdapter {
                 player.inventory.getTable().removeRow(index - 1);
 
         }
-        player.stats.print_character();// TODO uncomment o print stats and inv
+        player.stats.print_character();
         // board.setSomethingOnBoard(player);
         if (contains(movesToNewObstacle, playerMoves)) {
             Obstacle obstacle = new Obstacle(20, 20, board);
@@ -78,7 +77,7 @@ class Game extends KeyAdapter {
 
         System.out.println(board);
         System.out.println("Max carry: " + player.inventory.max);
-        player.inventory.drawInventory();// TODO uncomment
+        player.inventory.drawInventory();
     }
 
     private void createItems() {
@@ -99,7 +98,6 @@ class Game extends KeyAdapter {
             } else {
                 board.setSomethingOnBoard(BoardItems.get(i));
             }
-
             // for (Item item : items) { // dlaczego nie dziala?
             // if (player.x == item.x && player.y == item.y){
             // player.inventory.add(item);
@@ -108,18 +106,7 @@ class Game extends KeyAdapter {
             // else{
             // board.setSomethingOnBoard(item);
             // }
-
         }
-
-        if ((board.getCoordinates(player.getX(), player.getY()) instanceof Collectable)) {
-            System.out.println("collect");
-        }
-        player.stats.print_character(); // TODO uncomment o print stats and inv
-        board.setSomethingOnBoard(new StrengthPotion(1, 1));
-        board.setSomethingOnBoard(player);
-        System.out.println(board);
-        System.out.println("Max carry: " + player.inventory.max);
-        player.inventory.drawInventory(); // TODO uncomment
     }
 
     public static void clearScreen() {
